@@ -1,134 +1,59 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: white;
 }
 
-/* Body setup */
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  font-family: 'Poppins', sans-serif;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow-x: hidden;
-  padding: 20px;
+canvas#bgCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
-.container {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
 }
 
-/* Glowing Welcome Text */
-.glow-text {
-  font-size: 2.8rem;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px #00e6e6, 0 0 20px #00e6e6, 0 0 30px #00e6e6;
-  opacity: 0;
-  transform: translateY(-50px) scale(0.8);
-  animation: fadeInUp 1.5s ease forwards;
-  animation-delay: 0.3s;
-}
-
-/* Logo Image */
-.logo {
-  width: 150px;
-  height: auto;
-  margin-bottom: 40px;
-  transition: transform 0.5s ease;
-  filter: drop-shadow(0 0 10px #00e6e6);
-  opacity: 0;
-  transform: scale(0.5) rotate(-15deg);
-  animation: fadeInLogo 1.5s ease forwards;
-  animation-delay: 1s;
-}
-.logo:hover {
-  transform: scale(1.1) rotate(5deg);
-}
-
-/* Buttons */
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  opacity: 0;
-  transform: translateY(50px) scale(0.8);
-  animation: fadeInButtons 1.5s ease forwards;
-  animation-delay: 2s;
-}
-
-.buttons button {
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 50px;
-  background: linear-gradient(45deg, #00c3ff, #ffff1c);
-  color: #000;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  font-weight: bold;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.buttons button:hover {
-  background: linear-gradient(45deg, #ff6ec4, #7873f5);
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #ff6ec4, 0 0 30px #7873f5;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(-50px) scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes fadeInLogo {
-  0% {
-    opacity: 0;
-    transform: scale(0.5) rotate(-15deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-@keyframes fadeInButtons {
-  0% {
-    opacity: 0;
-    transform: translateY(50px) scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .glow-text {
-    font-size: 2rem;
-  }
-  .buttons button {
-    font-size: 1rem;
+.btn {
     padding: 12px 20px;
-  }
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #7289da;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #5b6eae;
+}
+
+.btn-disabled {
+    background-color: #444;
+    cursor: not-allowed;
+}
+
+.success-message {
+    color: lightgreen;
+    margin-top: 15px;
+    display: none;
+}
+
+.success-message.show {
+    display: block;
 }
